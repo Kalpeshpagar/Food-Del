@@ -1,0 +1,30 @@
+import express from 'express'
+import cors from 'cors'
+import { connectDB } from './config/db.js'
+import foodRouter from './routes/foodRoute.js'
+
+// app config
+const app = express()
+const port = 4000
+
+// middleware
+app.use(express.json())
+app.use(cors())
+
+// db connection
+connectDB();
+
+// api endpoit
+app.use('/api/food', foodRouter)
+app.use("/images", express.static('uploads'))
+// access an images from uploads folder endpoint
+
+app.get('/', (req, res) => {
+    console.log("API working")
+});
+
+app.listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`)
+})
+
+// mongodb+srv://kalpeshpagar57:7666286312@cluster0.cwer1yj.mongodb.net/?

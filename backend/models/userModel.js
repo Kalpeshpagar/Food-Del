@@ -15,11 +15,11 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        cardData: {
+        cartData: {
             type: Object,
             default: {},
         }
-    },{minimize: false}); // Prevents Mongoose from removing empty objects
+    }, { minimize: false }); // Prevents Mongoose from removing empty objects
 
 const userModel = mongoose.models.user || mongoose.model('user', userSchema);
 // If the model already exists, use it. Otherwise, create a new model.
